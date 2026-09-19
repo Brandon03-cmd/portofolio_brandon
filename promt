@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alex Carter | Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio website template for a designer, developer, or creative professional."
+    />
+    <style>
+      :root {
+        --bg: #0b1020;
+        --bg-soft: #121a2b;
+        --card: #1a2337;
+        --text: #ecf2ff;
+        --muted: #a7b4d1;
+        --primary: #7c9cff;
+        --secondary: #5ae4b8;
+        --accent: #ff9f6e;
+        --line: rgba(255, 255, 255, 0.08);
+        --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, "Segoe UI", Roboto, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(14px);
+        background: rgba(11, 16, 32, 0.75);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 72px;
+      }
+
+      .brand {
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      .cta {
+        display: inline-block;
+        padding: 12px 18px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: #08111d;
+        font-weight: 700;
+        box-shadow: var(--shadow);
+      }
+
+      .hero {
+        padding: 100px 0 70px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+        gap: 48px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        color: var(--secondary);
+        background: rgba(90, 228, 184, 0.08);
+        border: 1px solid rgba(90, 228, 184, 0.25);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 24px 0 16px;
+        font-size: clamp(2.8rem, 5vw, 5rem);
+        line-height: 1.02;
+        letter-spacing: -0.06em;
+      }
+
+      .lead {
+        max-width: 640px;
+        color: var(--muted);
+        font-size: 1.1rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 16px;
+        margin-top: 32px;
+        flex-wrap: wrap;
+      }
+
+      .button-secondary {
+        display: inline-block;
+        padding: 12px 18px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 26px;
+        margin-top: 38px;
+      }
+
+      .stat {
+        min-width: 120px;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.7rem;
+        line-height: 1.2;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .profile-card {
+        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 22px;
+        box-shadow: var(--shadow);
+      }
+
+      .avatar {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        min-height: 470px;
+      }
+
+      .avatar::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at top, rgba(255,255,255,0.28), transparent 20%),
+          linear-gradient(135deg, rgba(255,255,255,0.1), transparent 45%);
+      }
+
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(100%) contrast(1.08);
+        mix-blend-mode: screen;
+        opacity: 0.9;
+      }
+
+      .mini-card {
+        margin-top: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 16px 18px;
+      }
+
+      .mini-card strong {
+        display: block;
+        font-size: 1.2rem;
+      }
+
+      .mini-card span {
+        color: var(--muted);
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 18px;
+        margin-bottom: 36px;
+      }
+
+      .section-header h2 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3rem);
+        letter-spacing: -0.05em;
+      }
+
+      .section-header p {
+        color: var(--muted);
+        margin: 0;
+        max-width: 560px;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .card {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 26px;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(124, 156, 255, 0.5);
+      }
+
+      .icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, rgba(124,156,255,0.2), rgba(90,228,184,0.12));
+        color: var(--secondary);
+        margin-bottom: 18px;
+        font-weight: 800;
+      }
+
+      .card h3 {
+        margin: 0 0 10px;
+        font-size: 1.35rem;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .project {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        overflow: hidden;
+      }
+
+      .project-visual {
+        background: linear-gradient(135deg, rgba(124, 156, 255, 0.18), rgba(255,159,110,0.12));
+        min-height: 220px;
+        display: grid;
+        place-items: center;
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: rgba(255,255,255,0.85);
+      }
+
+      .project-body {
+        padding: 24px;
+      }
+
+      .project-body h3 {
+        margin: 0 0 10px;
+        font-size: 1.4rem;
+      }
+
+      .project-body p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .tags span {
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 18px;
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        gap: 24px;
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 22px 24px;
+      }
+
+      .timeline-date {
+        color: var(--secondary);
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .timeline-item h3 {
+        margin: 0 0 8px;
+        font-size: 1.2rem;
+      }
+
+      .timeline-item p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .contact {
+        background: linear-gradient(180deg, rgba(124,156,255,0.04), rgba(90,228,184,0.03));
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .contact-box {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 24px;
+        align-items: center;
+      }
+
+      .contact-box h2 {
+        margin: 0 0 10px;
+        font-size: clamp(2rem, 4vw, 3rem);
+        letter-spacing: -0.05em;
+      }
+
+      .contact-box p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .contact-actions {
+        display: flex;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      footer {
+        padding: 26px 0 50px;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      @media (max-width: 860px) {
+        .hero-grid,
+        .contact-box,
+        .timeline-item {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .grid-3,
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section-header {
+          display: block;
+        }
+
+        .section-header p {
+          margin-top: 12px;
+        }
+
+        .contact-actions {
+          justify-content: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <a href="#top" class="brand">Alex Carter</a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a class="cta" href="#contact">Hire Me</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <span class="eyebrow">Available for freelance work</span>
+            <h1>Designing digital experiences that feel human.</h1>
+            <p class="lead">
+              I’m a product designer and front-end developer helping startups and
+              brands turn ideas into polished, user-centered products.
+            </p>
+
+            <div class="hero-actions">
+              <a class="cta" href="#projects">View My Work</a>
+              <a class="button-secondary" href="#contact">Let’s Talk</a>
+            </div>
+
+            <div class="stats">
+              <div class="stat">
+                <strong>6+</strong>
+                <span>Years Experience</span>
+              </div>
+              <div class="stat">
+                <strong>35</strong>
+                <span>Projects Delivered</span>
+              </div>
+              <div class="stat">
+                <strong>12</strong>
+                <span>Clients Worldwide</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-card">
+            <div class="avatar">
+              <img
+                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80"
+                alt="Portrait of Alex Carter"
+              />
+            </div>
+            <div class="mini-card">
+              <div>
+                <strong>Based in New York</strong>
+                <span>Design + Development</span>
+              </div>
+              <span>● Available</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <div class="section-header">
+            <h2>About Me</h2>
+            <p>
+              I blend strategy, design, and engineering to create intuitive products
+              that are visually refined and easy to use.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <article class="card">
+              <div class="icon">01</div>
+              <h3>Strategy</h3>
+              <p>
+                I work closely with teams to define user needs, business goals, and
+                product direction before design moves forward.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="icon">02</div>
+              <h3>Design</h3>
+              <p>
+                I design clean interfaces and experiences with strong visual systems,
+                accessible interactions, and thoughtful storytelling.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="icon">03</div>
+              <h3>Development</h3>
+              <p>
+                I also build front-end experiences that match the design closely,
+                ensuring a smooth product experience from concept to launch.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="services">
+        <div class="container">
+          <div class="section-header">
+            <h2>What I Do</h2>
+            <p>
+              My work supports founders, teams, and brands looking for design systems,
+              product polish, and digital experiences that convert.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <article class="card">
+              <div class="icon">UX</div>
+              <h3>UX Design</h3>
+              <p>
+                Wireframes, user flows, prototyping, and product thinking grounded
+                in usability and measurable outcomes.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="icon">UI</div>
+              <h3>UI Design</h3>
+              <p>
+                High-fidelity interfaces, visual design systems, and polished
+                user-facing experiences across web and mobile products.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="icon">FE</div>
+              <h3>Frontend</h3>
+              <p>
+                Responsive builds, clean HTML/CSS/JS implementation, and
+                performance-focused front-end development.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="container">
+          <div class="section-header">
+            <h2>Selected Work</h2>
+            <p>
+              A few examples of products and digital experiences I’ve designed and
+              built to solve real user and business problems.
+            </p>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project">
+              <div class="project-visual">Nova</div>
+              <div class="project-body">
+                <h3>Nova Analytics Platform</h3>
+                <p>
+                  A data dashboard for marketing teams to track performance, customer
+                  behavior, and campaign insights in real time.
+                </p>
+                <div class="tags">
+                  <span>Product Design</span>
+                  <span>Dashboard</span>
+                  <span>UX Research</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-visual">Aster</div>
+              <div class="project-body">
+                <h3>Aster Studio</h3>
+                <p>
+                  A brand and portfolio experience for a creative studio, built to
+                  highlight case studies and attract high-value clients.
+                </p>
+                <div class="tags">
+                  <span>Branding</span>
+                  <span>Portfolio</span>
+                  <span>Web Design</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-visual">Lune</div>
+              <div class="project-body">
+                <h3>Lune Commerce</h3>
+                <p>
+                  An eCommerce redesign focused on simplifying purchasing flows,
+                  trust-building, and conversion improvements.
+                </p>
+                <div class="tags">
+                  <span>eCommerce</span>
+                  <span>UI Design</span>
+                  <span>Conversion</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-visual">Orbit</div>
+              <div class="project-body">
+                <h3>Orbit SaaS App</h3>
+                <p>
+                  A SaaS onboarding and workflow system designed to help teams onboard
+                  faster and reduce product confusion.
+                </p>
+                <div class="tags">
+                  <span>SaaS</span>
+                  <span>UX</span>
+                  <span>Prototyping</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="container">
+          <div class="section-header">
+            <h2>Experience</h2>
+            <p>
+              Over the years, I’ve helped teams from startups to established brands
+              deliver digital products with better clarity and stronger outcomes.
+            </p>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">2022 — Present</div>
+              <div>
+                <h3>Senior Product Designer</h3>
+                <p>
+                  Leading design strategy, UI systems, and product improvements for
+                  a B2B SaaS platform serving growing teams across multiple industries.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-date">2019 — 2022</div>
+              <div>
+                <h3>UX/UI Designer</h3>
+                <p>
+                  Designed experiences for startups and agencies, specializing in
+                  conversion-focused landing pages, dashboards, and eCommerce flows.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-date">2016 — 2019</div>
+              <div>
+                <h3>Visual Designer</h3>
+                <p>
+                  Created brand identities and digital marketing assets, translating
+                  business goals into clear and compelling visual systems.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <div class="container contact-box">
+          <div>
+            <h2>Let’s build something meaningful.</h2>
+            <p>
+              I’m open to freelance projects, collaborations, and product design
+              opportunities. Let’s talk about your vision.
+            </p>
+          </div>
+
+          <div class="contact-actions">
+            <a class="cta" href="mailto:alex@example.com">alex@example.com</a>
+            <a class="button-secondary" href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        © 2026 Alex Carter. All rights reserved.
+      </div>
+    </footer>
+  </body>
+</html>
